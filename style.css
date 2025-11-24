@@ -2009,3 +2009,99 @@ html {
         transform: none !important;
     }
 }
+
+/* --- Safe Animations & Interactions --- */
+
+/* 1. Link Hover Effect (Underline) */
+.nav-links a {
+    position: relative;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: #eec0c8;
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
+}
+
+/* 2. Tactile Button Press */
+.submit-btn,
+.back-btn,
+.gallery-tab {
+    transition: transform 0.1s ease, box-shadow 0.2s ease, background-color 0.3s ease;
+}
+
+.submit-btn:active,
+.back-btn:active,
+.gallery-tab:active {
+    transform: scale(0.96);
+}
+
+/* 3. Card Lift on Hover */
+.activity-card,
+.testimonial-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.activity-card:hover,
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* 4. Soft Focus Glow */
+input:focus,
+textarea:focus {
+    border-color: #eec0c8;
+    box-shadow: 0 0 0 4px rgba(238, 192, 200, 0.2);
+    outline: none;
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+/* 5. Gentle Float Animation */
+@keyframes gentleFloat {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-6px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.card-icon,
+.about-icon {
+    animation: gentleFloat 4s ease-in-out infinite;
+}
+
+/* 6. Pulse Effect for CTA */
+@keyframes softPulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(238, 192, 200, 0.4);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(238, 192, 200, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(238, 192, 200, 0);
+    }
+}
+
+.submit-btn {
+    animation: softPulse 3s infinite;
+}
