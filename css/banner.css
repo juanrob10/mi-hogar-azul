@@ -158,18 +158,163 @@
     }
 
     .banner-content h1 {
-        font-size: 2rem;
+        font-size: 2.5rem;
         line-height: 1.2;
     }
 
     .banner-content p {
-        font-size: 0.95rem;
+        font-size: 1rem;
         letter-spacing: 2px;
     }
 }
 
 @media (max-width: 480px) {
+    .lofi-banner {
+        height: auto;
+        min-height: 60vh;
+        padding-bottom: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /* Allow content to dictate height, but keep a minimum */
+    }
+
+    .banner-content {
+        padding: 2rem 1rem;
+        width: 95%;
+        border-radius: 20px;
+    }
+
     .banner-content h1 {
-        font-size: 1.8rem;
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    .banner-content p {
+        font-size: 0.9rem;
+        letter-spacing: 1px;
+    }
+
+    .scroll-indicator {
+        bottom: 100px;
+        /* Move up to avoid overlap with bottom sheet/nav */
+    }
+
+    .mobile-deco {
+        position: absolute;
+        color: #fff;
+        font-size: 1.5rem;
+        opacity: 0.8;
+        animation: twinkle 3s infinite ease-in-out;
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    }
+
+    .star-1 {
+        top: 15%;
+        left: 10%;
+        animation-delay: 0s;
+    }
+
+    .star-2 {
+        top: 25%;
+        right: 15%;
+        animation-delay: 1s;
+        font-size: 1rem;
+    }
+
+    .star-3 {
+        bottom: 30%;
+        left: 20%;
+        animation-delay: 2s;
+        font-size: 1.2rem;
+    }
+
+    .star-4 {
+        bottom: 20%;
+        right: 10%;
+        animation-delay: 1.5s;
+        font-size: 0.8rem;
+    }
+
+    @keyframes twinkle {
+
+        0%,
+        100% {
+            opacity: 0.4;
+            transform: scale(0.8);
+        }
+
+        50% {
+            opacity: 1;
+            transform: scale(1.2);
+        }
+    }
+}
+
+/* Global Subtle Stars (Visible on all sizes, positioned relative to banner) */
+.tiny-star {
+    position: absolute;
+    color: #fff;
+    font-size: 1rem;
+    /* Increased size slightly */
+    opacity: 0;
+    animation: subtleTwinkle 4s infinite ease-in-out;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+    z-index: 5;
+    /* Ensure on top */
+    display: block !important;
+    /* Force display */
+}
+
+.ts-1 {
+    top: 15%;
+    left: 20%;
+    animation-delay: 0.5s;
+}
+
+.ts-2 {
+    top: 30%;
+    right: 20%;
+    animation-delay: 1.2s;
+    font-size: 0.8rem;
+}
+
+.ts-3 {
+    bottom: 35%;
+    left: 10%;
+    animation-delay: 2.5s;
+}
+
+.ts-4 {
+    bottom: 20%;
+    right: 30%;
+    animation-delay: 0.8s;
+    font-size: 0.9rem;
+}
+
+.ts-5 {
+    top: 10%;
+    right: 40%;
+    animation-delay: 3s;
+}
+
+.ts-6 {
+    bottom: 10%;
+    left: 40%;
+    animation-delay: 1.8s;
+    font-size: 0.6rem;
+}
+
+@keyframes subtleTwinkle {
+
+    0%,
+    100% {
+        opacity: 0.2;
+        transform: scale(0.5);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
     }
 }

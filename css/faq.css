@@ -107,3 +107,32 @@
         line-height: 1.6;
     }
 }
+
+@media (max-width: 480px) {
+    .faq-section {
+        padding: 3rem 1rem;
+    }
+
+    .faq-section h2 {
+        font-size: 1.6rem;
+    }
+
+    .faq-item {
+        padding: 1.5rem 1rem;
+    }
+
+    .faq-question {
+        font-size: 1rem;
+        padding: 1rem 0;
+    }
+
+    .faq-answer p {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 1150px) {
+    .faq-section {
+        background-color: transparent;
+    }
+}

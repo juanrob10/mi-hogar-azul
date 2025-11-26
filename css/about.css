@@ -6,21 +6,7 @@
     overflow: hidden;
 }
 
-.shape-blob {
-    position: absolute;
-    background: linear-gradient(45deg, #FCE4EC 0%, #E8F5E9 100%);
-    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-    z-index: -1;
-    animation: morph 8s ease-in-out infinite;
-    opacity: 0.6;
-}
 
-.shape-blob-1 {
-    top: 10%;
-    left: -5%;
-    width: 300px;
-    height: 300px;
-}
 
 .about-container {
     max-width: 800px;
@@ -86,5 +72,25 @@
     .about-section p {
         font-size: 1rem;
         line-height: 1.6;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-section {
+        padding: 3rem 1rem;
+    }
+
+    .about-container {
+        padding: 1.5rem 1rem;
+        border-radius: 20px;
+    }
+
+    .about-section h2 {
+        font-size: 1.8rem !important;
+    }
+
+    .about-section p {
+        font-size: 0.95rem;
+        line-height: 1.5;
     }
 }

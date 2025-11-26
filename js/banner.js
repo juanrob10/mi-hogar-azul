@@ -1,11 +1,11 @@
-// Banner Canvas Animation (Cute Lofi Blobs)
+// Banner Canvas Animation (Subtle Lofi Stars)
 const canvas = document.getElementById('banner-canvas');
 
 if (canvas) {
     const ctx = canvas.getContext('2d');
 
     let width, height;
-    let blobs = [];
+    let stars = [];
 
     function resize() {
         if (!canvas.parentElement) return;
@@ -13,7 +13,7 @@ if (canvas) {
         height = canvas.height = canvas.parentElement.offsetHeight;
     }
 
-    class Blob {
+    class Star {
         constructor() {
             this.init();
         }
@@ -21,51 +21,80 @@ if (canvas) {
         init() {
             this.x = Math.random() * width;
             this.y = Math.random() * height;
-            this.size = Math.random() * 100 + 50; // 50-150px
-            this.speedX = (Math.random() - 0.5) * 0.5; // Slow movement
-            this.speedY = (Math.random() - 0.5) * 0.5;
-            // Pastel Colors: Soft Sage, Misty Rose, Pale Blue, Lavender
-            const colors = ['#E8F5E9', '#FCE4EC', '#E3F2FD', '#F3E5F5'];
+            this.size = Math.random() * 15 + 5; // 5-20px size
+            this.maxSize = this.size;
+            this.speedX = (Math.random() - 0.5) * 0.2; // Very slow movement
+            this.speedY = (Math.random() - 0.5) * 0.2;
+            this.alpha = Math.random() * 0.5 + 0.1; // Low opacity for subtlety
+            this.alphaChange = (Math.random() - 0.5) * 0.005; // Twinkle effect
+            // Pastel Colors: Soft Sage, Misty Rose, Pale Blue, Lavender, Gold
+            const colors = ['#E8F5E9', '#FCE4EC', '#E3F2FD', '#F3E5F5', '#FFF9C4'];
             this.color = colors[Math.floor(Math.random() * colors.length)];
+            this.rotation = Math.random() * Math.PI * 2;
+            this.rotationSpeed = (Math.random() - 0.5) * 0.002;
         }
 
         update() {
             this.x += this.speedX;
             this.y += this.speedY;
+            this.rotation += this.rotationSpeed;
+            this.alpha += this.alphaChange;
 
-            // Bounce off edges
-            if (this.x < -this.size || this.x > width + this.size) this.speedX *= -1;
-            if (this.y < -this.size || this.y > height + this.size) this.speedY *= -1;
+            // Twinkle logic
+            if (this.alpha <= 0.1 || this.alpha >= 0.6) {
+                this.alphaChange *= -1;
+            }
+
+            // Wrap around edges
+            if (this.x < -50) this.x = width + 50;
+            if (this.x > width + 50) this.x = -50;
+            if (this.y < -50) this.y = height + 50;
+            if (this.y > height + 50) this.y = -50;
         }
 
         draw() {
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.save();
+            ctx.translate(this.x, this.y);
+            ctx.rotate(this.rotation);
+            ctx.globalAlpha = this.alpha;
             ctx.fillStyle = this.color;
+
+            // Draw 4-pointed star (sparkle)
+            ctx.beginPath();
+            for (let i = 0; i < 4; i++) {
+                ctx.lineTo(0, this.size / 2); // Outer point
+                ctx.rotate(Math.PI / 4);
+                ctx.lineTo(0, this.size / 6); // Inner point
+                ctx.rotate(Math.PI / 4);
+            }
+            ctx.closePath();
             ctx.fill();
+
+            ctx.restore();
         }
     }
 
-    function initBlobs() {
-        blobs = [];
-        // Use fewer blobs for better performance on lower-end devices
-        for (let i = 0; i < 8; i++) {
-            blobs.push(new Blob());
+    function initStars() {
+        stars = [];
+        // Number of stars based on screen size
+        const starCount = Math.floor((width * height) / 4000);
+        for (let i = 0; i < starCount; i++) {
+            stars.push(new Star());
         }
     }
 
     function animate() {
         ctx.clearRect(0, 0, width, height);
-        blobs.forEach(blob => {
-            blob.update();
-            blob.draw();
+        stars.forEach(star => {
+            star.update();
+            star.draw();
         });
         requestAnimationFrame(animate);
     }
 
     window.addEventListener('resize', () => {
         resize();
-        initBlobs();
+        initStars();
     });
 
     // Start animation lazily when banner enters the viewport to save CPU on load
@@ -74,7 +103,7 @@ if (canvas) {
         if (window.__bannerAnimationStarted) return;
         window.__bannerAnimationStarted = true;
         resize();
-        initBlobs();
+        initStars();
         animate();
     }
 

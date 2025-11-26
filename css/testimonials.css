@@ -64,6 +64,8 @@
     font-family: serif;
     opacity: 0.6;
     z-index: 0;
+    display: none;
+    /* Hidden to prevent odd positioning */
 }
 
 .testimonial-card p {
@@ -151,5 +153,45 @@
     .testimonial-card p {
         font-size: 1rem;
         line-height: 1.6;
+    }
+}
+
+@media (max-width: 480px) {
+    .testimonials-section {
+        padding: 3rem 0;
+    }
+
+    .testimonials-section h2 {
+        font-size: 1.6rem;
+        margin-bottom: 2rem;
+    }
+
+    .testimonials-container {
+        padding: 1rem 1rem 2rem;
+    }
+
+    .testimonial-card {
+        flex: 0 0 85%;
+        width: 85%;
+        padding: 1.5rem;
+    }
+
+    .testimonial-card p {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    .author-info span {
+        font-size: 0.9rem;
+    }
+
+    .author-info small {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 1150px) {
+    .testimonials-section {
+        background-color: transparent;
     }
 }

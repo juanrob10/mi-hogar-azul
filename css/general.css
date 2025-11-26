@@ -8,8 +8,8 @@
 
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #fdfbf7;
-    /* Warm Lofi Background */
+    background-color: #FCE4EC;
+    /* Match banner background to avoid contrast when mobile nav hides */
     color: #4a4a4a;
     overflow-x: hidden;
 }
@@ -136,6 +136,7 @@ html {
 }
 
 @media (max-width: 1150px) {
+    /* Body background remains pink (inherited) to avoid white gaps */
 
     /* Scroll to Top - Mobile Override */
     .scroll-to-top {

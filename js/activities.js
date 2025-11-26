@@ -48,11 +48,11 @@ const activitiesData = {
                     </ul>
                 </div>
                 <div class="action-area">
-                    <button class="back-btn" onclick="showList()">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M19 12H5M12 19l-7-7 7-7"/>
+                    <button class="back-btn" onclick="showList()" aria-label="Regresar a Servicios">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="19" y1="12" x2="5" y2="12"></line>
+                            <polyline points="12 19 5 12 12 5"></polyline>
                         </svg>
-                        Regresar a Servicios
                     </button>
                 </div>
             </div>
@@ -107,11 +107,11 @@ const activitiesData = {
                     </ul>
                 </div>
                 <div class="action-area">
-                    <button class="back-btn" onclick="showList()">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M19 12H5M12 19l-7-7 7-7"/>
+                    <button class="back-btn" onclick="showList()" aria-label="Regresar a Servicios">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="19" y1="12" x2="5" y2="12"></line>
+                            <polyline points="12 19 5 12 12 5"></polyline>
                         </svg>
-                        Regresar a Servicios
                     </button>
                 </div>
             </div>
@@ -166,11 +166,11 @@ const activitiesData = {
                     </ul>
                 </div>
                 <div class="action-area">
-                    <button class="back-btn" onclick="showList()">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M19 12H5M12 19l-7-7 7-7"/>
+                    <button class="back-btn" onclick="showList()" aria-label="Regresar a Servicios">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="19" y1="12" x2="5" y2="12"></line>
+                            <polyline points="12 19 5 12 12 5"></polyline>
                         </svg>
-                        Regresar a Servicios
                     </button>
                 </div>
             </div>
@@ -189,6 +189,8 @@ document.querySelectorAll('.activity-card').forEach(card => {
             activitiesList.classList.add('hidden');
             activityDetail.classList.remove('hidden');
             activityDetail.classList.add('activity-detail');
+            // Scroll to top of section to ensure smooth transition
+            document.getElementById('activities').scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
     });
 });

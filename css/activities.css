@@ -294,27 +294,33 @@
 .back-btn {
     display: inline-flex;
     align-items: center;
-    gap: 0.8rem;
-    padding: 1rem 2.5rem;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    padding: 0;
     background: #2c3e50;
     color: #fff;
     border: none;
-    border-radius: 50px;
-    font-size: 1rem;
-    font-weight: 500;
+    border-radius: 50%;
     cursor: pointer;
-    transition: transform 0.1s ease, box-shadow 0.2s ease, background-color 0.3s ease;
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.2s ease, background-color 0.3s ease;
     box-shadow: 0 10px 20px rgba(44, 62, 80, 0.2);
+}
+
+.back-btn svg {
+    width: 28px;
+    height: 28px;
+    stroke-width: 2.5;
 }
 
 .back-btn:hover {
     background: #34495e;
-    transform: translateY(-2px);
+    transform: translateY(-5px) scale(1.1);
     box-shadow: 0 15px 30px rgba(44, 62, 80, 0.3);
 }
 
 .back-btn:active {
-    transform: scale(0.96);
+    transform: scale(0.9);
 }
 
 @media (max-width: 1150px) {
@@ -329,7 +335,7 @@
 
     .activities-grid {
         grid-template-columns: 1fr;
-        gap: 1rem;
+        gap: 1.5rem;
         padding: 0;
     }
 
@@ -371,15 +377,23 @@
     }
 
     .back-btn {
-        padding: 0.6rem 1.2rem;
-        font-size: 0.85rem;
-        width: 100%;
-        justify-content: center;
-        min-height: 48px;
+        width: 50px;
+        height: 50px;
+        min-width: unset;
+        min-height: unset;
+        padding: 0;
     }
 }
 
 @media (max-width: 480px) {
+    .activities {
+        padding: 3rem 1rem;
+    }
+
+    .activities h2 {
+        font-size: 1.6rem !important;
+    }
+
     .detail-hero {
         min-height: 250px;
         padding: 3rem 1.5rem;
@@ -397,9 +411,29 @@
 
     .detail-card {
         padding: 1.5rem 1rem;
+        border-radius: 20px;
     }
 
     .detail-content-wrapper {
         padding: 0 0.5rem 2rem;
+    }
+
+    .back-btn {
+        width: 50px;
+        height: 50px;
+    }
+
+    .activity-card h3 {
+        font-size: 1.3rem;
+    }
+
+    .activity-card p {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 1150px) {
+    .activities {
+        background-color: transparent;
     }
 }
