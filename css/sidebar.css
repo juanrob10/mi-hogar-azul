@@ -82,32 +82,7 @@
 /* Mobile Styles */
 @media (max-width: 768px) {
     .sidebar-nav {
-        left: 10px;
-        /* Closer to edge */
-        top: auto;
-        bottom: 50%;
-        /* Center relative to bottom */
-        transform: translateY(50%);
-        /* Adjust for height to center */
-        /* Position controlled by JS for stability */
-        margin: 0;
-        height: fit-content;
-
-        gap: 35px;
-        /* Larger gap */
-        width: 4px;
-        /* Very thin bar */
-        padding: 20px 0;
-        /* Vertical padding only */
-        background: rgba(255, 255, 255, 0.6);
-        /* More visible bar */
-        border-radius: 2px;
-        border: none;
-        /* Remove border to keep it clean/thin */
-        overflow: visible;
-        /* Allow dots to overflow */
-        transition: none !important;
-        /* Prevent movement animation on mobile scroll */
+        display: none !important;
     }
 
     .sidebar-dot {

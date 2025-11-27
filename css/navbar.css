@@ -135,9 +135,11 @@
     z-index: 3;
 }
 
-.audio-control:hover #audio-icon {
-    transform: translate(-50%, -50%) scale(1.1) rotate(360deg);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+@media (hover: hover) {
+    .audio-control:hover #audio-icon {
+        transform: translate(-50%, -50%) scale(1.1) rotate(360deg);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+    }
 }
 
 #audio-icon.playing {
@@ -229,10 +231,10 @@
     .audio-control {
         display: flex !important;
         position: fixed;
-        top: auto;
-        bottom: 550px;
-        /* Anchored to bottom, but high up to mimic top position */
-        right: 0;
+        top: 105px;
+        bottom: auto;
+        /* Anchored to top right */
+        right: 20px;
         z-index: 2000;
         background: transparent;
         backdrop-filter: none;

@@ -4,8 +4,8 @@ const audioIcon = document.getElementById('audio-icon');
 const audio = document.getElementById('bg-music');
 const visualizerCanvas = document.getElementById('audio-visualizer');
 
-if (audioControl && audio && visualizerCanvas) {
-    const vCtx = visualizerCanvas.getContext('2d');
+if (audioControl && audio) {
+    const vCtx = visualizerCanvas ? visualizerCanvas.getContext('2d') : null;
 
     let audioContext, analyser, source;
     let isPlaying = false;
@@ -14,19 +14,27 @@ if (audioControl && audio && visualizerCanvas) {
     function initAudio() {
         if (!audioContext) {
             audioContext = new (window.AudioContext || window.webkitAudioContext)();
-            analyser = audioContext.createAnalyser();
-            source = audioContext.createMediaElementSource(audio);
-            source.connect(analyser);
-            analyser.connect(audioContext.destination);
-            analyser.fftSize = 64; // Low resolution for "lofi" look
+            if (visualizerCanvas && vCtx) {
+                analyser = audioContext.createAnalyser();
+                source = audioContext.createMediaElementSource(audio);
+                source.connect(analyser);
+                analyser.connect(audioContext.destination);
+                analyser.fftSize = 64; // Low resolution for "lofi" look
+            } else {
+                // Just play audio if no visualizer
+                // We don't need to connect source if we are not analyzing it, 
+                // but for consistency we might want to just let the audio element play.
+                // However, web audio API might be needed for other things later.
+                // For now, simple playback is fine.
+            }
         }
     }
 
-    function togglePlay() {
+    async function togglePlay() {
         initAudio();
 
-        if (audioContext.state === 'suspended') {
-            audioContext.resume();
+        if (audioContext && audioContext.state === 'suspended') {
+            await audioContext.resume();
         }
 
         if (isPlaying) {
@@ -36,22 +44,27 @@ if (audioControl && audio && visualizerCanvas) {
             audioIcon.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M8 5v14l11-7z"/></svg>';
             audioIcon.classList.remove('playing');
         } else {
-            audio.play().then(() => {
+            try {
+                await audio.play();
                 isPlaying = true;
                 // Pause Icon SVG
                 audioIcon.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';
                 audioIcon.classList.add('playing');
-                renderVisualizer();
-            }).catch(e => console.log("Playback failed:", e));
+                if (visualizerCanvas && vCtx) {
+                    renderVisualizer();
+                }
+            } catch (e) {
+                console.log("Playback failed:", e);
+            }
         }
     }
 
     audioControl.addEventListener('click', togglePlay);
 
     function renderVisualizer() {
-        if (!isPlaying) {
+        if (!isPlaying || !analyser || !vCtx) {
             // Clear canvas when paused (no flat line)
-            vCtx.clearRect(0, 0, visualizerCanvas.width, visualizerCanvas.height);
+            if (vCtx && visualizerCanvas) vCtx.clearRect(0, 0, visualizerCanvas.width, visualizerCanvas.height);
             return;
         }
 
@@ -85,6 +98,8 @@ if (audioControl && audio && visualizerCanvas) {
     }
 
     // Initial setup (No draw)
-    visualizerCanvas.width = 60;
-    visualizerCanvas.height = 30;
+    if (visualizerCanvas) {
+        visualizerCanvas.width = 60;
+        visualizerCanvas.height = 30;
+    }
 }
