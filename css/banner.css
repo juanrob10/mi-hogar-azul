@@ -332,3 +332,93 @@
         bottom: 5%;
     }
 }
+
+/* Global Decorations (Mobile + Desktop) */
+.mobile-deco {
+    position: absolute;
+    pointer-events: none;
+    opacity: 0.6;
+    z-index: 0;
+}
+
+.star-1 {
+    top: 15%;
+    left: 10%;
+    font-size: 2rem;
+    color: #f48fb1;
+    animation: twinkle 4s ease-in-out infinite;
+}
+
+.star-2 {
+    bottom: 25%;
+    right: 10%;
+    font-size: 1.5rem;
+    color: #ce93d8;
+    animation: twinkle 5s ease-in-out infinite reverse;
+}
+
+.star-3 {
+    bottom: 30%;
+    left: 20%;
+    font-size: 1.2rem;
+    animation-delay: 2s;
+}
+
+.star-4 {
+    bottom: 20%;
+    right: 10%;
+    font-size: 0.8rem;
+    animation-delay: 1.5s;
+}
+
+/* Tiny Stars - Global */
+.tiny-star {
+    position: absolute !important;
+    /* Force absolute */
+    color: #fff;
+    font-size: 1rem;
+    opacity: 0;
+    animation: subtleTwinkle 4s infinite ease-in-out;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+    z-index: 5;
+    display: block;
+}
+
+.ts-1 {
+    top: 15%;
+    left: 20%;
+    animation-delay: 0.5s;
+}
+
+.ts-2 {
+    top: 30%;
+    right: 20%;
+    animation-delay: 1.2s;
+    font-size: 0.8rem;
+}
+
+.ts-3 {
+    bottom: 35%;
+    left: 10%;
+    animation-delay: 2.5s;
+}
+
+.ts-4 {
+    bottom: 20%;
+    right: 30%;
+    animation-delay: 0.8s;
+    font-size: 0.9rem;
+}
+
+.ts-5 {
+    top: 10%;
+    right: 40%;
+    animation-delay: 3s;
+}
+
+.ts-6 {
+    bottom: 10%;
+    left: 40%;
+    animation-delay: 1.8s;
+    font-size: 0.6rem;
+}
