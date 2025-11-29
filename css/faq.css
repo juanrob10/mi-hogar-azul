@@ -126,3 +126,24 @@
         background-color: transparent;
     }
 }
+
+/* Mobile Polish (Moved from mobile-nav.css) */
+@media (max-width: 1150px) {
+    #faq.section-active .faq-item {
+        background: white;
+        border-radius: 15px;
+        margin-bottom: 1rem;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+        border: none;
+        overflow: hidden;
+    }
+
+    #faq.section-active .faq-question {
+        padding: 1.2rem;
+        font-weight: 600;
+    }
+
+    #faq.section-active .faq-answer {
+        background: #fafafa;
+    }
+}

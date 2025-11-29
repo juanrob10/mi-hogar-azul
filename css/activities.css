@@ -31,7 +31,7 @@
 }
 
 .activity-card {
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.6);
     backdrop-filter: blur(10px);
     padding: 2.5rem 2rem;
     border-radius: 25px;
@@ -327,10 +327,12 @@
 
 @media (max-width: 1150px) {
     .activities {
-        padding: 4rem 1.5rem;
+        padding: 3rem 1rem 1rem; /* CORREGIDO: menos padding bottom */
     }
 
-    /* Font sizes handled by variables */
+    .activities h2 {
+        margin-bottom: 2rem; /* CORREGIDO: menos espacio bajo título */
+    }
 
     .activities-grid {
         grid-template-columns: 1fr;
@@ -342,28 +344,36 @@
         padding: 2rem 1.5rem;
     }
 
-    /* Font sizes handled by variables */
-
     .detail-hero {
         height: auto;
-        min-height: 300px;
+        min-height: 280px; /* CORREGIDO: altura más compacta */
         align-items: center;
-        padding: 4rem 2rem;
+        padding: 3rem 1.5rem; /* CORREGIDO: padding ajustado */
     }
 
-    /* Font sizes handled by variables */
-
     .detail-card {
-        padding: 2rem 1.5rem;
+        padding: 2rem 1.2rem; /* CORREGIDO: padding más compacto */
     }
 
     .detail-content-wrapper {
-        padding: 0 1rem 2rem;
+        padding: 0 0.5rem 1.5rem; /* CORREGIDO: menos padding */
         margin-top: 0;
     }
 
     .benefit-grid {
         grid-template-columns: 1fr;
+        gap: 1.2rem; /* CORREGIDO: menos espacio entre beneficios */
+    }
+
+    .benefit-item {
+        padding: 1.5rem; /* CORREGIDO: más compacto */
+        gap: 1rem; /* CORREGIDO: menos espacio entre icono y texto */
+    }
+
+    .benefit-icon {
+        width: 45px; /* CORREGIDO: ligeramente más pequeño */
+        height: 45px;
+        font-size: 1.8rem;
     }
 
     .hero-content {
@@ -377,18 +387,26 @@
         min-height: unset;
         padding: 0;
     }
+
+    .detail-description {
+        margin-bottom: 2.5rem; /* CORREGIDO: menos espacio */
+        line-height: 1.7; /* CORREGIDO: mejor para mobile */
+    }
+
+    .action-area {
+        margin-top: 2.5rem; /* CORREGIDO: menos espacio */
+        padding-top: 1.5rem;
+    }
 }
 
 @media (max-width: 480px) {
     .activities {
-        padding: 3rem 1rem;
+        padding: 2rem 0.5rem 0.5rem; /* CORREGIDO: aún más compacto */
     }
 
-    /* Font sizes handled by variables */
-
     .detail-hero {
-        min-height: 250px;
-        padding: 3rem 1.5rem;
+        min-height: 240px; /* CORREGIDO: más compacto */
+        padding: 2rem 1rem; /* CORREGIDO: padding ajustado */
     }
 
     .hero-icon-wrapper {
@@ -407,7 +425,7 @@
     }
 
     .detail-content-wrapper {
-        padding: 0 0.5rem 2rem;
+        padding: 0 0.5rem 1.5rem; /* CORREGIDO: menos padding */
     }
 
     .back-btn {
@@ -415,13 +433,68 @@
         height: 50px;
     }
 
-    /* Font sizes handled by variables */
+    .benefit-item {
+        padding: 1.2rem; /* CORREGIDO: más compacto en móviles pequeños */
+    }
 
-    /* Font sizes handled by variables */
+    /* Mejorar legibilidad en móviles pequeños */
+    .detail-hero h2 {
+        font-size: calc(var(--fs-h2) * 0.95);
+        line-height: 1.2;
+    }
+
+    .hero-subtitle {
+        font-size: calc(var(--fs-body) * 0.9);
+        letter-spacing: 2px;
+    }
 }
 
 @media (max-width: 1150px) {
     .activities {
         background-color: transparent;
+    }
+}
+
+/* Mobile Polish (Moved from mobile-nav.css) */
+@media (max-width: 1150px) {
+    #activities.section-active .activities-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem; /* CORREGIDO: menos espacio entre cards */
+        padding-bottom: 1rem; /* CORREGIDO: menos espacio inferior */
+    }
+
+    #activities.section-active .activity-card {
+        background: rgba(255, 255, 255, 0.6);
+        border-radius: 20px;
+        padding: 1.5rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        transform: none;
+        transition: transform 0.2s;
+    }
+
+    #activities.section-active .activity-card:active {
+        transform: scale(0.98);
+    }
+}
+
+/* Ajustes para móviles muy pequeños */
+@media (max-width: 360px) {
+    .activities {
+        padding: 1.5rem 0.25rem 0.25rem; /* CORREGIDO: mínimo espacio */
+    }
+
+    .detail-hero {
+        min-height: 220px; /* CORREGIDO: más compacto */
+    }
+
+    .benefit-item {
+        flex-direction: column; /* CORREGIDO: apilar icono y texto */
+        text-align: center;
+        gap: 0.8rem;
+    }
+
+    .benefit-icon {
+        align-self: center;
     }
 }

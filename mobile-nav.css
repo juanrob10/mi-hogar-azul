@@ -297,12 +297,18 @@
         padding: 4rem 1.5rem 8rem 1.5rem;
         /* Increased top padding */
         /* Extra bottom padding for tab bar */
-        min-height: 100vh;
+        /*min-height: 100vh;*/
         box-sizing: border-box;
         /* Center content vertically */
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
+
+        /* Override min-height for testimonials */
+        #testimonials.section-active {
+            min-height: auto;
+        }
+
         /* Align to top to respect padding */
     }
 
@@ -372,137 +378,4 @@
     font-size: 1.5rem;
     color: #ce93d8;
     animation: twinkle 5s ease-in-out infinite reverse;
-}
-
-/* --- About Section Polish --- */
-#about.section-active .about-container {
-    background: transparent;
-    box-shadow: none;
-    border: none;
-    padding: 0;
-    backdrop-filter: none;
-}
-
-#about.section-active .about-container p {
-    background: rgba(255, 255, 255, 0.6);
-    padding: 1.5rem;
-    border-radius: 20px;
-    margin-bottom: 1rem;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
-}
-
-/* --- Services Section Polish --- */
-#activities.section-active .activities-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    padding-bottom: 2rem;
-}
-
-#activities.section-active .activity-card {
-    background: white;
-    border-radius: 20px;
-    padding: 1.5rem;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-    transform: none;
-    /* Reset hover effects */
-    transition: transform 0.2s;
-}
-
-#activities.section-active .activity-card:active {
-    transform: scale(0.98);
-}
-
-/* --- Testimonials Section Polish --- */
-#testimonials.section-active {
-    background: transparent;
-    /* Removed white background */
-}
-
-#testimonials.section-active .testimonials-container {
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    gap: 1rem;
-    padding: 1rem 0 2rem 0;
-    -webkit-overflow-scrolling: touch;
-    /* Hide scrollbar */
-    scrollbar-width: none;
-}
-
-#testimonials.section-active .testimonials-container::-webkit-scrollbar {
-    display: none;
-}
-
-#testimonials.section-active .testimonial-card {
-    min-width: 85%;
-    scroll-snap-align: center;
-    background: white;
-    border-radius: 25px;
-    padding: 2rem;
-    box-shadow: 0 10px 25px rgba(216, 27, 96, 0.1);
-    margin: 0;
-}
-
-/* --- FAQ Section Polish --- */
-#faq.section-active .faq-item {
-    background: white;
-    border-radius: 15px;
-    margin-bottom: 1rem;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
-    border: none;
-    overflow: hidden;
-}
-
-#faq.section-active .faq-question {
-    padding: 1.2rem;
-    font-weight: 600;
-}
-
-#faq.section-active .faq-answer {
-    background: #fafafa;
-}
-
-/* --- Contact Section Polish --- */
-#contact.section-active .contact-info-item {
-    background: white;
-    border-radius: 20px;
-    padding: 1rem;
-    margin-bottom: 1rem;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
-    border: none;
-    flex-direction: row;
-    align-items: center;
-    text-align: left;
-    gap: 1rem;
-}
-
-#contact.section-active .icon-wrapper {
-    width: 50px;
-    height: 50px;
-    margin-bottom: 0;
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #d81b60;
-    /* Ensure icon color matches */
-}
-
-#contact.section-active .contact-info-item h3 {
-    margin: 0 0 0.2rem 0;
-    font-size: 1.1rem;
-}
-
-#contact.section-active .contact-info-item p {
-    margin: 0;
-    font-size: 0.95rem;
-}
-
-#contact.section-active .map-container {
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-    border: 4px solid white;
-    height: 300px;
 }
