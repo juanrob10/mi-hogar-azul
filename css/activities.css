@@ -5,7 +5,7 @@
 }
 
 
-activities h2 {
+.activities h2 {
     font-family: 'Playfair Display', serif;
     font-size: var(--fs-h2);
     color: #2c3e50;
@@ -19,7 +19,7 @@ activities h2 {
     display: block;
     width: 50%;
     height: 2px;
-    background-color: #A5D6A7;
+    background-color: #FCE4EC; 
     margin: 0.5rem auto 0;
 }
 
